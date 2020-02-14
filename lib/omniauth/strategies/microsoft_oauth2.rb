@@ -3,14 +3,15 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class MicrosoftOauth2 < OmniAuth::Strategies::OAuth2
-      AuthUrl = ENV["MICROSOFT_AUTH_URL"] || "https://login.live.com"
+      AuthUrl = ENV["MICROSOFT_AUTH_URL"] || "https://login.microsoftonline.com"
+      Tenant = ENV["MICROSOFT_AUTH_TENANT"] || "common"
 
       option :name, 'microsoft_oauth2'
 
       option :client_options, {
         site:          AuthUrl,
-        authorize_url: "#{AuthUrl}/oauth20_authorize.srf",
-        token_url:     "#{AuthUrl}/oauth20_token.srf"
+        authorize_url: "#{AuthUrl}/#{Tenant}/oauth2/v2.0/authorize_url",
+        token_url:     "#{AuthUrl}/#{Tenant}/oauth2/v2.0/token"
       }
 
       uid do
