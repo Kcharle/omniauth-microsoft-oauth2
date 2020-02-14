@@ -10,7 +10,7 @@ module OmniAuth
 
       option :client_options, {
         site:          AuthUrl,
-        authorize_url: "#{AuthUrl}/#{Tenant}/oauth2/v2.0/authorize_url",
+        authorize_url: "#{AuthUrl}/#{Tenant}/oauth2/v2.0/authorize",
         token_url:     "#{AuthUrl}/#{Tenant}/oauth2/v2.0/token"
       }
 
