@@ -16,15 +16,15 @@ module OmniAuth
       }
 
       uid do
-        access_token.params["user_id"]
-      end
-
-      info do
         # Update (Feb. 14, 2020) - Commenting this out as Microsoft Identity Endpoint does not provide this field on the response anymore
-        # { name: uid } # only mandatory field
+        # access_token.params["user_id"]
 
         # We instead randomize a string temporarily
         SecureRandom.hex
+      end
+
+      info do
+        { name: uid } # only mandatory field
       end
 
       extra do
