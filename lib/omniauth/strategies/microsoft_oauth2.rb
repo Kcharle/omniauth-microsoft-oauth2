@@ -1,4 +1,5 @@
 require 'omniauth-oauth2'
+require 'securerandom'
 
 module OmniAuth
   module Strategies
@@ -19,7 +20,11 @@ module OmniAuth
       end
 
       info do
-        { name: uid } # only mandatory field
+        # Update (Feb. 14, 2020) - Commenting this out as Microsoft Identity Endpoint does not provide this field on the response anymore
+        # { name: uid } # only mandatory field
+
+        # We instead randomize a string temporarily
+        SecureRandom.hex
       end
 
       extra do
