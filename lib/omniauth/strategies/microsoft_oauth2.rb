@@ -50,6 +50,11 @@ module OmniAuth
       def missing_client_secret?
         [nil, ""].include?(options.client_secret)
       end
+
+      # as per https://github.com/omniauth/omniauth-oauth2/issues/93
+      def callback_url
+        full_host + script_name + callback_path
+      end
     end
   end
 end
